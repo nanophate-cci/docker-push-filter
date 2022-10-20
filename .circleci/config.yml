@@ -14,7 +14,7 @@ jobs:
       - run: |
           docker image build --tag kelvintaywl-cci/foo:123 --file ./Dockerfile.foo .
       - run: |
-          for docker_img in $(docker image list --format "{{.Repository}}:{{.Tag}}")
+          for docker_img in $(docker image list --format "{{.Repository}}:{{.Tag}}" --filter label=maintainer=kelvin@circleci.com)
           do
             echo "mock docker push ${docker_img}"
           done
