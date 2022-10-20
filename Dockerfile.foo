@@ -1,5 +1,5 @@
 FROM cimg/base:current-20.04
 
-LABEL maintainer=kelvin@circleci.com
+LABEL maintainer=foo@example.com
 
 RUN sudo apt-get update -y && sudo apt-get install cowsay

@@ -1,0 +1,5 @@
+FROM cimg/node:16.18.0
+
+LABEL maintainer=bar@example.com
+
+RUN sudo apt-get update -y && sudo apt-get install cowsay
