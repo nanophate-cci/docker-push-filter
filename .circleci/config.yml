@@ -1,0 +1,20 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:2021.01
+    resource_class: medium
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.7
+      - run: |
+          docker image list --format '{{.Repository}}:{{.Tag}}'
+      - run: |
+          docker image build --tag kelvintaywl-cci/foo:123 --file ./Dockerfile.foo .
+      - run: |
+          for docker_img in $(docker image list --format "{{.Repository}}:{{.Tag}}")
+          do
+            echo "mock docker push ${docker_img}"
+          done

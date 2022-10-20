@@ -1,0 +1,5 @@
+FROM cimg/base:current-20.04
+
+LABEL maintainer=kelvin@circleci.com
+
+RUN sudo apt-get update -y && sudo apt-get install cowsay
