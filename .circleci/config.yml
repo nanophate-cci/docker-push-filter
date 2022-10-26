@@ -20,11 +20,6 @@ commands:
       filter-string:
         type: string
     steps:
-      - run: |
-          ssh remote-docker \<<EOF
-            sudo bash -c 'echo "{\"experimental\": true}" > /etc/docker/daemon.json'
-            sudo systemctl restart docker
-          EOF
       - run:
           name: (Mock) Push images with filter << parameters.filter-string >>
           command: |
@@ -42,6 +37,11 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      - run: |
+          ssh remote-docker \<<EOF
+            sudo bash -c 'echo "{\"experimental\": true}" > /etc/docker/daemon.json'
+            sudo systemctl restart docker
+          EOF
       - run: |
           docker image list --format '{{.Repository}}:{{.Tag}}'
       - run: |
