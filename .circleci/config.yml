@@ -38,10 +38,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: |
-          ssh remote-docker \<<EOF
-            sudo bash -c 'echo "{\"experimental\": true}" > /etc/docker/daemon.json'
-            sudo systemctl restart docker
-          EOF
+          sudo bash -c 'echo "{\"experimental\": true}" > /etc/docker/daemon.json'
+          sudo systemctl restart docker
       - run: |
           docker image list --format '{{.Repository}}:{{.Tag}}'
       - run: |
