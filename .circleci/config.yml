@@ -32,17 +32,13 @@ commands:
 jobs:
   build:
     docker:
-      - image: cimg/base:2021.01
+      - image: naoyer/cci-base-img-with-docker-experimental:latest
     resource_class: medium
     steps:
       - checkout
       - setup_remote_docker
       - run: ssh remote-docker docker info
       - run: ssh remote-docker docker container ls
-      - run: |
-          ssh remote-docker \<<EOF
-            sudo bash -c 'echo "{\"experimental\": true}" > /etc/docker/daemon.json'
-          EOF
       - run: docker version
       - run: ssh remote-docker sudo systemctl restart docker
       - run: |
