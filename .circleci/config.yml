@@ -28,6 +28,7 @@ commands:
             do
               echo "mock docker push ${docker_img}"
             done        
+      - run: journalctl -u docker
 
 jobs:
   build:
