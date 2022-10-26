@@ -37,6 +37,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      - run: ssh remote-docker docker info
       - run: |
           sudo bash -c 'echo "{\"experimental\": true}" > /etc/docker/daemon.json'
           sudo systemctl restart docker
