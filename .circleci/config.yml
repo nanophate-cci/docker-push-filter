@@ -39,7 +39,7 @@ jobs:
       - setup_remote_docker
       - run: ssh remote-docker docker info
       - run: |
-          ssh remote-docker <<EOF
+          ssh remote-docker \<<EOF
             sudo bash -c 'echo "{\"experimental\": true}" > /etc/docker/daemon.json'
           EOF
       - run: docker version
