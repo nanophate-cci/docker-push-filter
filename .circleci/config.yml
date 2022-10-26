@@ -40,6 +40,7 @@ jobs:
       - run: |
           sudo bash -c 'echo "{\"experimental\": true}" > /etc/docker/daemon.json'
           sudo systemctl restart docker
+      - run: docker version
       - run: |
           docker image list --format '{{.Repository}}:{{.Tag}}'
       - run: |
