@@ -36,7 +36,8 @@ jobs:
     resource_class: medium
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 20.10.20
       - run: ssh remote-docker docker info
       - run: ssh remote-docker docker container ls
       - run: docker version
