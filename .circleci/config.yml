@@ -21,7 +21,7 @@ commands:
         type: string
     steps:
       - run:
-          name: (Mock) Push images with filter << parameters.filter-string >> ...
+          name: (Mock) Push images with filter << parameters.filter-string >> 
           command: |
             # push only images with << parameters.filter-string >> filter
             for docker_img in $(docker image list --format "{{.Repository}}:{{.Tag}}" --filter << parameters.filter-string >>)
