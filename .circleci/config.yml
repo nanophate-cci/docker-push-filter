@@ -26,7 +26,7 @@ commands:
             # push only images with << parameters.filter-string >> filter
             for docker_img in $(docker image list --format "{{.Repository}}:{{.Tag}}" --filter << parameters.filter-string >>)
             do
-              echo "mock docker push ${docker_img}"
+              echo "mock momoke docker push ${docker_img}"
             done        
 
 jobs:
