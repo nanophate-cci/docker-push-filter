@@ -54,3 +54,9 @@ jobs:
           filter-string: label=maintainer=foo@example.com
       - push-docker-images:
           filter-string: label=maintainer=bar@example.com
+
+workflows:
+  build_and_test:
+    jobs:
+      - build:
+          context: nano
